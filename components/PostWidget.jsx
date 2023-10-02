@@ -4,6 +4,7 @@ import moment from "moment";
 import Link from "next/link";
 
 import { getSimilarPosts, getRecentPosts } from "../services";
+import { grpahCMSImageLoader } from "../util";
 
 const PostWidget = ({ categories, slug }) => {
   const [relatedPosts, setRelatedPosts] = useState([]);
@@ -29,11 +30,12 @@ const PostWidget = ({ categories, slug }) => {
         <div key={index} className="flex items-center w-full mb-4">
           <div className="w-16 flex-none">
             <Image
+              loader={grpahCMSImageLoader}
               alt={post.title}
               height="60"
               width="60"
               unoptimized
-              className="align-middle rounded-full"
+              className="align-middle rounded-full object-fill"
               src={post.featuredImage.url}
             />
           </div>
